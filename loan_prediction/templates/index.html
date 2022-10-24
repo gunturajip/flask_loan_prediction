@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Pinjaman</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center p-5 bg-gray" style="max-width: 800px;">
+        <h3 class="mb-4 text-primary">Prediksi Status Pinjaman</h3>
+        <form action="{{url_for('prediksi')}}" method="POST">
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="loan_amnt" class="form-label">Loan Amount</label>
+                    <input type="text" class="form-control" name="loan_amnt" id="loan_amnt" placeholder="2500" required>
+                </div>
+                <div class="col">
+                    <label for="int_rate" class="form-label">Int Rate</label>
+                    <input type="text" class="form-control" name="int_rate" id="int_rate" placeholder="15.27" required>
+                </div>
+                <div class="col">
+                    <label for="installment" class="form-label">Installment</label>
+                    <input type="text" class="form-control" name="installment" id="installment" placeholder="59.83" required>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="annual_inc" class="form-label">Annual Income</label>
+                    <input type="text" class="form-control" name="annual_inc" id="annual_inc" placeholder="30000" required>
+                </div>
+                <div class="col">
+                    <label for="dti" class="form-label">DTI</label>
+                    <input type="text" class="form-control" name="dti" id="dti" placeholder="1" required>
+                </div>
+                <div class="col">
+                    <label for="delinq_2yrs" class="form-label">Delinq in Last 2 Years</label>
+                    <input type="text" class="form-control" name="delinq_2yrs" id="delinq_2yrs" placeholder="0" required>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="inq_last_6mths" class="form-label">Inquiries in Last 6 Months</label>
+                    <input type="text" class="form-control" name="inq_last_6mths" id="inq_last_6mths" placeholder="5" required>
+                </div>
+                <div class="col">
+                    <label for="total_pymnt" class="form-label">Total Payment</label>
+                    <input type="text" class="form-control" name="total_pymnt" id="total_pymnt" placeholder="1008.71" required>
+                </div>
+                <div class="col">
+                    <label for="total_rec_prncp" class="form-label">Total Rec Principal</label>
+                    <input type="text" class="form-control" name="total_rec_prncp" id="total_rec_prncp" placeholder="456.46" required>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="recoveries" class="form-label">Recoveries</label>
+                    <input type="text" class="form-control" name="recoveries" id="recoveries" placeholder="117.08" required>
+                </div>
+                <div class="col">
+                    <label for="collection_recovery_fee" class="form-label">Collection Recovery Fee</label>
+                    <input type="text" class="form-control" name="collection_recovery_fee" id="collection_recovery_fee" placeholder="1.11" required>
+                </div>
+                <div class="col">
+                    <label for="last_pymnt_amnt" class="form-label">Last Payment Amount</label>
+                    <input type="text" class="form-control" name="last_pymnt_amnt" id="last_pymnt_amnt" placeholder="119.66" required>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="issue_d" class="form-label">Issue Date</label>
+                    <input type="date" class="form-control" name="issue_d" id="issue_d" required>
+                </div>
+                <div class="col">
+                    <label for="last_pymnt_d" class="form-label">Last Payment Date</label>
+                    <input type="date" class="form-control" name="last_pymnt_d" id="last_pymnt_d" required>
+                </div>
+                <div class="col">
+                    <label for="last_credit_pull_d" class="form-label">Last Credit Pull Date</label>
+                    <input type="date" class="form-control" name="last_credit_pull_d" id="last_credit_pull_d" required>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="term" class="form-label">Term</label>
+                    <select class="form-select" name="term" id="term">
+                        <option value="36 months" selected>36 months</option>
+                        <option value="60 months">60 months</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="grade" class="form-label">Grade</label>
+                    <select class="form-select" name="grade" id="grade">
+                        <option value="A" selected>A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="sub_grade" class="form-label">Sub Grade</label>
+                    <select class="form-select" name="sub_grade" id="sub_grade">
+                        <option value="A1" selected>A1</option>
+                        <option value="A2">A2</option>
+                        <option value="A3">A3</option>
+                        <option value="A4">A4</option>
+                        <option value="A5">A5</option>
+                        <option value="B1">B1</option>
+                        <option value="B2">B2</option>
+                        <option value="B3">B3</option>
+                        <option value="B4">B4</option>
+                        <option value="B5">B5</option>
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                        <option value="C3">C3</option>
+                        <option value="C4">C4</option>
+                        <option value="C5">C5</option>
+                        <option value="D1">D1</option>
+                        <option value="D2">D2</option>
+                        <option value="D3">D3</option>
+                        <option value="D4">D4</option>
+                        <option value="D5">D5</option>
+                        <option value="E1">E1</option>
+                        <option value="E2">E2</option>
+                        <option value="E3">E3</option>
+                        <option value="E4">E4</option>
+                        <option value="E5">E5</option>
+                        <option value="F1">F1</option>
+                        <option value="F2">F2</option>
+                        <option value="F3">F3</option>
+                        <option value="F4">F4</option>
+                        <option value="F5">F5</option>
+                        <option value="G1">G1</option>
+                        <option value="G2">G2</option>
+                        <option value="G3">G3</option>
+                        <option value="G4">G4</option>
+                        <option value="G5">G5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <label for="emp_length" class="form-label">Employment Length</label>
+                    <select class="form-select" name="emp_length" id="emp_length">
+                        <option value="0" selected>< 1 Year</option>
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                        <option value="4">4 Years</option>
+                        <option value="5">5 Years</option>
+                        <option value="6">6 Years</option>
+                        <option value="7">7 Years</option>
+                        <option value="8">8 Years</option>
+                        <option value="9">9 Years</option>
+                        <option value="10">+10 Years</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="home_ownership" class="form-label">Home Ownership</label>
+                    <select class="form-select" name="home_ownership" id="home_ownership">
+                        <option value="ANY" selected>Any</option>
+                        <option value="MORTGAGE">Mortgage</option>
+                        <option value="NONE">None</option>
+                        <option value="OTHER">Other</option>
+                        <option value="OWN">Own</option>
+                        <option value="RENT">Rent</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="purpose" class="form-label">Purpose</label>
+                    <select class="form-select" name="purpose" id="purpose">
+                        <option value="car" selected>Car</option>
+                        <option value="credit_card">Credit Card</option>
+                        <option value="debt_consolidation">Debt Consolidation</option>
+                        <option value="educational">Educational</option>
+                        <option value="home_improvement">Home Improvement</option>
+                        <option value="house">House</option>
+                        <option value="major_purchase">Major Purchase</option>
+                        <option value="medical">Medical</option>
+                        <option value="moving">Moving</option>
+                        <option value="other">Other</option>
+                        <option value="renewable_energy">Renewable Energy</option>
+                        <option value="small_business">Small Business</option>
+                        <option value="vacation">Vacation</option>
+                        <option value="wedding">Wedding</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Prediksi</button>
+        </form>
+    </div>
+</body>
+</html>
